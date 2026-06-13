@@ -845,19 +845,19 @@
         <div class="exam-setup-card">
           <div class="section-title">Number of Questions</div>
           <div class="quiz-config-grid" id="quiz-count-grid">
-            <div class="quiz-config-item selected" onclick="selectQuizCount(10)">
+            <div class="quiz-config-item selected" onclick="selectQuizCount(10, this)">
               <div class="qci-label">Quick</div>
               <div class="qci-val">10</div>
             </div>
-            <div class="quiz-config-item" onclick="selectQuizCount(20)">
+            <div class="quiz-config-item" onclick="selectQuizCount(20, this)">
               <div class="qci-label">Standard</div>
               <div class="qci-val">20</div>
             </div>
-            <div class="quiz-config-item" onclick="selectQuizCount(30)">
+            <div class="quiz-config-item" onclick="selectQuizCount(30, this)">
               <div class="qci-label">Deep</div>
               <div class="qci-val">30</div>
             </div>
-            <div class="quiz-config-item" onclick="selectQuizCount(90)">
+            <div class="quiz-config-item" onclick="selectQuizCount(90, this)">
               <div class="qci-label">Full</div>
               <div class="qci-val">ALL</div>
             </div>
@@ -1427,10 +1427,10 @@ let quizStreak = 0;
 let quizAnswered = false;
 let quizResults = []; // {question, options, correctIndex, chosenIndex, disciplineLabel}
 
-function selectQuizCount(n) {
+function selectQuizCount(n, el) {
   quizConfig.count = n;
-  document.querySelectorAll('#quiz-count-grid .quiz-config-item').forEach(el => el.classList.remove('selected'));
-  event.currentTarget.classList.add('selected');
+  document.querySelectorAll('#quiz-count-grid .quiz-config-item').forEach(e => e.classList.remove('selected'));
+  if (el) el.classList.add('selected');
 }
 
 function selectQuizDisc(d) {
